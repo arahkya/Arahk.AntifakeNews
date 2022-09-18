@@ -1,3 +1,5 @@
+using Arahk.AntifakeNews.Domains.Entities;
+using Arahk.AntifakeNews.Domains.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Arahk.AntifakeNews.Domains;

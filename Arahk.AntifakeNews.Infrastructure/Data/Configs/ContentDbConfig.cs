@@ -1,7 +1,8 @@
+using Arahk.AntifakeNews.Infrastructure.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Arahk.AntifakeNews.Infrastructure;
+namespace Arahk.AntifakeNews.Infrastructure.Data.Configs;
 
 public class ContentDbConfig : IEntityTypeConfiguration<ContentDbEntity>
 {

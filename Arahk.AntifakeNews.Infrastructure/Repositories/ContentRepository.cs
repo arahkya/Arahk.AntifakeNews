@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using Arahk.AntifakeNews.Domains;
+using Arahk.AntifakeNews.Infrastructure.Data;
+using Arahk.AntifakeNews.Infrastructure.Data.Entities;
+using Arahk.AntifakeNews.Domains.Repositories;
+using Arahk.AntifakeNews.Domains.Entities;
+using Arahk.AntifakeNews.Domains.ValueObjects;
 
-namespace Arahk.AntifakeNews.Infrastructure;
+namespace Arahk.AntifakeNews.Infrastructure.Repositories;
 public class ContentRepository : IContentRepository
 {
     private readonly DefaultDbContext defaultDbContext;

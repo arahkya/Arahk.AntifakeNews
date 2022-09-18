@@ -1,4 +1,4 @@
-﻿using Arahk.AntifakeNews.Domains;
+﻿using Arahk.AntifakeNews.Domains.Repositories;
 
 namespace Arahk.AntifakeNews.Infrastructure;
 public class UnitOfWork : IUnitOfWork

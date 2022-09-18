@@ -1,4 +1,4 @@
-namespace Arahk.AntifakeNews.Infrastructure;
+namespace Arahk.AntifakeNews.Infrastructure.Data.Entities;
 
 public class UserDbEntity
 {

@@ -1,4 +1,7 @@
-﻿namespace Arahk.AntifakeNews.Domains;
+﻿using Arahk.AntifakeNews.Domains.Repositories;
+using Arahk.AntifakeNews.Domains.ValueObjects;
+
+namespace Arahk.AntifakeNews.Domains.Entities;
 public class ContentEntity
 {
     internal static IUnitOfWork UnitOfWork {get; set; } = null!;

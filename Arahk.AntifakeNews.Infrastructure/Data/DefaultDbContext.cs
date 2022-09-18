@@ -1,7 +1,8 @@
 using System.Reflection;
+using Arahk.AntifakeNews.Infrastructure.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Arahk.AntifakeNews.Infrastructure;
+namespace Arahk.AntifakeNews.Infrastructure.Data;
 public class DefaultDbContext : DbContext
 {
     public DbSet<UserDbEntity> Users { get; set; } = null!;

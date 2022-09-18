@@ -1,4 +1,4 @@
-using Arahk.AntifakeNews.Domains;
+using Arahk.AntifakeNews.Domains.Entities;
 using Arahk.AntifakeNews.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
