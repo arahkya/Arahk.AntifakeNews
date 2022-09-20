@@ -10,8 +10,7 @@ public static class Startup
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddDbContext<DefaultDbContext>();
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IContentRepository, ContentRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();        
 
         using var scope = services.BuildServiceProvider().CreateScope();
         scope.ServiceProvider.GetRequiredService<DefaultDbContext>().Database.EnsureDeleted();

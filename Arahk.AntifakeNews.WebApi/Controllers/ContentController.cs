@@ -1,4 +1,5 @@
 using Arahk.AntifakeNews.Domains.Entities;
+using Arahk.AntifakeNews.Domains.ValueObjects;
 using Arahk.AntifakeNews.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,5 +31,23 @@ public class ContentController : ControllerBase
                 CreatedOn = entity.Info.CreatedOn
             };
         }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] ContentCreateModel model)
+    {
+        string createdBy = "Arahk Yambupah";
+        DateTime createdOn = DateTime.Now;
+        Guid createdById = Guid.NewGuid();
+
+        ContentEntity content = ContentEntity.New(
+            ContentTitle.New(model.TitleTh, model.TitleEn), 
+            ContentDetail.New(model.Detail), 
+            ContentAuthor.New(model.Author, model.Organize),
+            InfoEntity.New(createdBy, createdOn, createdById));
+
+        await content.SaveAsync();
+
+        return Ok(content.Identity.Id);
     }
 }

@@ -4,13 +4,15 @@ using Arahk.AntifakeNews.Domains.ValueObjects;
 namespace Arahk.AntifakeNews.Domains.Entities;
 public class ContentEntity
 {
-    internal static IUnitOfWork UnitOfWork {get; set; } = null!;
+    internal static IUnitOfWork UnitOfWork { get; set; } = null!;
 
-    public ContentTitle Title { get; private set; }
-    public ContentDetail Detail { get; private set; }
-    public ContentAuthor Author { get; private set; }
-    public InfoEntity Info { get; private set; }
-    public IdentityEntity Identity { get; set; }
+    public ContentTitle Title { get; private set; } = null!;
+    public ContentDetail Detail { get; private set; } = null!;
+    public ContentAuthor Author { get; private set; } = null!;
+    public InfoEntity Info { get; private set; } = null!;
+    public IdentityEntity Identity { get; set; } = null!;
+
+    private ContentEntity() { }
 
     private ContentEntity(IdentityEntity identity, ContentTitle title, ContentDetail detail, ContentAuthor author, InfoEntity info)
     {
@@ -21,9 +23,20 @@ public class ContentEntity
         Info = info;
     }
 
-    public static ContentEntity New(IdentityEntity identity, ContentTitle title, ContentDetail detail, ContentAuthor author, InfoEntity info)
+    internal static ContentEntity New(IdentityEntity identity, ContentTitle title, ContentDetail detail, ContentAuthor author, InfoEntity info)
     {
         return new ContentEntity(identity, title, detail, author, info);
+    }
+
+    public static ContentEntity New(ContentTitle title, ContentDetail detail, ContentAuthor author, InfoEntity info)
+    {
+        ContentEntity newContent = new();
+        newContent.Title = title;
+        newContent.Detail = detail;
+        newContent.Author = author;
+        newContent.Info = info;
+        
+        return newContent;
     }
 
     public static Task<List<ContentEntity>> ListAsync()
@@ -33,7 +46,10 @@ public class ContentEntity
 
     public async Task SaveAsync()
     {
-        await UnitOfWork.ContentRepository.AddAsync(this);
+        Guid id = await UnitOfWork.ContentRepository.AddAsync(this);
+
+        Identity = IdentityEntity.New(id);
+
         await UnitOfWork.ContentRepository.CompleteAsync();
     }
 }

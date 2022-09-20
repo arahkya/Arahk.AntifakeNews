@@ -1,0 +1,9 @@
+POST https://antifakenews-api.azurewebsites.net/content
+
+{
+  "titleEn": "string1",
+  "titleTh": "string2",
+  "detail": "string3",
+  "author": "string4",
+  "organize": "string5"
+}

@@ -4,20 +4,23 @@ using Arahk.AntifakeNews.Infrastructure.Data.Entities;
 using Arahk.AntifakeNews.Domains.Repositories;
 using Arahk.AntifakeNews.Domains.Entities;
 using Arahk.AntifakeNews.Domains.ValueObjects;
+using Microsoft.Extensions.Logging;
 
 namespace Arahk.AntifakeNews.Infrastructure.Repositories;
 public class ContentRepository : IContentRepository
 {
     private readonly DefaultDbContext defaultDbContext;
+    private readonly ILogger<ContentRepository> logger;
 
-    public ContentRepository(DefaultDbContext defaultDbContext)
+    public ContentRepository(DefaultDbContext defaultDbContext, ILogger<ContentRepository> logger)
     {
         this.defaultDbContext = defaultDbContext;
+        this.logger = logger;
     }
 
-    public async Task AddAsync(ContentEntity contentEntity)
+    public async Task<Guid> AddAsync(ContentEntity contentEntity)
     {
-        await defaultDbContext.AddAsync(new ContentDbEntity
+        ContentDbEntity contentDbEntity = new()
         {
             TitleTh = contentEntity.Title.Thai,
             TitleEn = contentEntity.Title.English,
@@ -26,12 +29,21 @@ public class ContentRepository : IContentRepository
             Organize = contentEntity.Author.Organize,
             CreatedOn = contentEntity.Info.CreatedOn,
             CreatedById = contentEntity.Info.CreatedById
-        });
+        };
+
+        await defaultDbContext.AddAsync(contentDbEntity);
+
+        return contentDbEntity.Id;
     }
 
     public async Task CompleteAsync()
     {
-        await defaultDbContext.SaveChangesAsync();
+        int effectedRows = await defaultDbContext.SaveChangesAsync();
+
+        if(effectedRows <= 0)
+        {
+            logger.LogWarning("No effected rows on SaveChangeAsync.");
+        }
     }
 
     public async Task<List<ContentEntity>> ListAsync()

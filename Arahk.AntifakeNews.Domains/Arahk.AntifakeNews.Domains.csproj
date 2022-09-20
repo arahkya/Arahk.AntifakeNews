@@ -10,4 +10,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Arahk.AntifakeNews.Infrastructure" />
+  </ItemGroup>
 </Project>
