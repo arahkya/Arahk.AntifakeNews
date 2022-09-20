@@ -1,1 +1,1 @@
-GET https://antifakenews-api.azurewebsites.net/content
+GET https://localhost:7017/content

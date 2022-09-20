@@ -1,9 +1,10 @@
-POST https://antifakenews-api.azurewebsites.net/content
+POST https://localhost:7017/content
+Content-Type: application/json
 
 {
-  "titleEn": "string1",
-  "titleTh": "string2",
-  "detail": "string3",
-  "author": "string4",
-  "organize": "string5"
+  "titleEn": "Lorem cillum sit minim voluptate dolore aute cillum nulla anim incididunt id est.",
+  "titleTh": "Nulla do ad nulla dolore.",
+  "detail": "Cupidatat pariatur anim pariatur reprehenderit ipsum sint consequat anim mollit. Mollit duis est laborum pariatur cillum pariatur nisi pariatur magna voluptate proident elit duis laborum. Duis aliquip proident excepteur enim. Aliqua sint tempor laborum amet elit do deserunt dolor eiusmod. Occaecat esse non proident consequat dolor consequat. Ex consectetur consequat incididunt sint Lorem voluptate in sint non enim dolore excepteur minim sint. Exercitation sint ut dolore esse officia nisi nostrud anim. Culpa reprehenderit excepteur veniam cupidatat excepteur adipisicing laborum laboris pariatur ad ut aute nostrud. Lorem labore est exercitation laborum esse amet incididunt culpa anim sunt esse culpa sit.",
+  "author": "Arahk Yambupah",
+  "organize": "BBL"
 }
