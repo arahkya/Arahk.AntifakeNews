@@ -12,6 +12,7 @@ public class UserDbConfig : IEntityTypeConfiguration<UserDbEntity>
         builder.Property(p => p.Firstname).HasMaxLength(100).IsRequired();
         builder.Property(p => p.Lastname).HasMaxLength(100).IsRequired();
 
+        builder.ToTable("Members");
         builder.HasData(new []
         {
             new UserDbEntity()

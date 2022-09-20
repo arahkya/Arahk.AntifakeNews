@@ -16,6 +16,7 @@ public class ContentDbConfig : IEntityTypeConfiguration<ContentDbEntity>
         builder.Property(p => p.Author).HasMaxLength(100).IsRequired();
         builder.HasOne(p => p.CreatedBy).WithMany().HasForeignKey(p => p.CreatedById).IsRequired().OnDelete(DeleteBehavior.NoAction);
 
+        builder.ToTable("Contents");
         builder.HasData(new []
         {
             new ContentDbEntity()

@@ -2,14 +2,15 @@ namespace Arahk.AntifakeNews.Domains.ValueObjects;
 
 public class InfoEntity
 {
-    public string CreatedBy { get; set; } = null!;
-    public DateTime CreatedOn { get; set; }
-    public Guid CreatedById { get; set; }
+    public string CreatedBy { get; private set; } = null!;
+    public DateTime CreatedOn { get; private set; }
+    public Guid CreatedById { get; private set; }
 
     private InfoEntity(string createdBy, DateTime createdOn, Guid createdById)
     {
         CreatedBy = createdBy;
         CreatedOn = createdOn;
+        CreatedById = createdById;
     }
 
     public static InfoEntity New(string createdBy, DateTime createdOn, Guid createdById)

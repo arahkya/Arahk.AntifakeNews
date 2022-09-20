@@ -13,13 +13,6 @@ public class DefaultDbContext : DbContext
 
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        base.OnConfiguring(optionsBuilder);
-
-        optionsBuilder.UseInMemoryDatabase("Default");
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

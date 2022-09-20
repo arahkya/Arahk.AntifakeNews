@@ -36,9 +36,9 @@ public class ContentController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] ContentCreateModel model)
     {
-        string createdBy = "Arahk Yambupah";
+        string createdBy = "Estio officia";
         DateTime createdOn = DateTime.Now;
-        Guid createdById = Guid.NewGuid();
+        Guid createdById = Guid.Parse("AC7383B1-3703-462C-89C9-D8D5534D0DB1");
 
         ContentEntity content = ContentEntity.New(
             ContentTitle.New(model.TitleTh, model.TitleEn), 
